@@ -597,6 +597,12 @@ Builder::Builder(const BuildOptions& opts, size_t total_targets):
         buf[s] = 0;
     }
     else
+# elif defined(__sun__)
+    ssize_t s = readlink("/proc/self/path/a.out", buf, sizeof(buf)-1);
+    if(s >= 0)
+    {
+        buf[s] = 0;
+    }
 # elif defined(__APPLE__)
     uint32_t  s = sizeof(buf);
     if( _NSGetExecutablePath(buf, &s) == 0 )
