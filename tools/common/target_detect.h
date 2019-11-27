@@ -14,6 +14,13 @@
 # else
 #  define DEFAULT_TARGET_NAME "x86-pc-windows-msvc"
 # endif
+// Solaris/illumos
+#elif defined(__sun__)
+# if defined(__amd64__)
+#  define DEFAULT_TARGET_NAME "x86_64-pc-solaris2.11"
+# else
+#  warning "Unable to detect a suitable default target (solaris)"
+# endif
 // - Linux
 #elif defined(__linux__)
 # if defined(__amd64__)

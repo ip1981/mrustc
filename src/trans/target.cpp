@@ -369,6 +369,13 @@ namespace
         {
             return load_spec_from_file(target_name);
         }
+        else if(target_name == "x86_64-pc-solaris2.11")
+        {
+            return TargetSpec {
+                "unix", "solaris", "gnu", {CodegenMode::Gnu11, false, "x86_64-pc-solaris2.11", BACKEND_C_OPTS_GNU},
+                ARCH_X86_64
+                };
+        }
         else if(target_name == "i586-linux-gnu")
         {
             return TargetSpec {
